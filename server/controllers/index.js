@@ -14,7 +14,7 @@ var findHighestID = function(table, connection, callback){
   connection.query(findHighestQuery + table, function(err, result) {
     if (err) throw err;
     else{
-      callback(result);
+      callback(result+1);
     }
   });
 }
@@ -22,10 +22,10 @@ var findHighestID = function(table, connection, callback){
 var isInDatabase = function(table, name, connection, callback){
   connection.query(isInQuery1 + table + isInQuery2 + "'"+name+"'", function(err, result){
     if (err){
-      console.log('failed');
+      findHighestID(table, connection, callback);
     }
     else{
-      callback(result);
+      callback(result[0].id);
     }
 
   })
