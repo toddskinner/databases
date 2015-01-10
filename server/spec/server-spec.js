@@ -16,7 +16,7 @@ describe("Persistent Node Chat Server", function() {
     });
     dbConnection.connect();
 
-       var tablename = ""; // TODO: fill this out
+       var tablename = "messages"; // TODO: fill this out
 
     /* Empty the db table before each test so that multiple tests
      * (or repeated runs of the tests) won't screw each other up: */
@@ -54,8 +54,8 @@ describe("Persistent Node Chat Server", function() {
           // Should have one result:
           expect(results.length).to.equal(1);
 
-          // TODO: If you don't have a column named text, change this test.
-          expect(results[0].text).to.equal("In mercy's name, three days is all I need.");
+          // TODO: If you don't have a column named text, change this test. CHANGED TO CONTENT
+          expect(results[0].content).to.equal("In mercy's name, three days is all I need.");
 
           done();
         });
